@@ -43,7 +43,7 @@ function extractNamesLocally(rawText) {
             !val.includes('@') &&
             isNaN(Number(val)) &&
             /^[A-Za-z]/.test(val) &&
-            !['id', 'name', 'section', 'email', 'roll', 'no', 'number'].includes(val.toLowerCase())
+            !['id','name','section','email','roll','no','number'].includes(val.toLowerCase())
           ) {
             names.push(val);
             break;
@@ -56,7 +56,7 @@ function extractNamesLocally(rawText) {
     for (let i = hasHeader ? 1 : 0; i < lines.length; i++) {
 
       const line = lines[i]
-        .replace(/^\d+[.):\-\s]+/, '') 
+        .replace(/^\d+[.):\-\s]+/, '')
         .trim();
 
       if (
@@ -90,10 +90,8 @@ export default function AIAssistant() {
 
   const [extracting, setExtracting] = useState(false);
   const [dbLoading, setDbLoading] = useState(false);
-  const [dragOver, setDragOver] = useState(false);
 
   const chatRef = useRef(null);
-  const fileInputRef = useRef(null);
 
   useEffect(() => {
     if (chatRef.current)
@@ -106,7 +104,7 @@ export default function AIAssistant() {
   const handleExtract = () => {
 
     if (!pastedText.trim()) {
-      addMessage('system', '⚠ Please paste text or upload a file first.');
+      addMessage('system', '⚠ Please paste text first.');
       return;
     }
 
@@ -184,24 +182,6 @@ export default function AIAssistant() {
 
   };
 
-  const handleFile = (file) => {
-
-    if (!file) return;
-
-    const reader = new FileReader();
-
-    reader.onload = e => {
-
-      setPastedText(e.target.result);
-
-      addMessage('system', `📄 File loaded: ${file.name}`);
-
-    };
-
-    reader.readAsText(file);
-
-  };
-
   return (
     <div>
 
@@ -257,5 +237,4 @@ export default function AIAssistant() {
 
     </div>
   );
-
 }
