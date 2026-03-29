@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const API = 'http://localhost:8080';
+const API = '${API_BASE}';
 
 export default function SeatingView() {
   const [seating, setSeating] = useState([]);
