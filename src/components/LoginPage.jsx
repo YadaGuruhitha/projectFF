@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { apiFetch } from "../api"; // adjust if path is different
+import { apiFetch } from "../api";
+import "../styles/LoginPage.css"; // ✅ IMPORTANT (your UI styles)
 
 function LoginPage() {
   const [username, setUsername] = useState("");
@@ -18,13 +19,14 @@ function LoginPage() {
 
       console.log("Login success:", data);
       alert("Login Successful ✅");
+
     } catch (err) {
       setError(err.message);
     }
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="login-container">
       <h2>Login Page</h2>
 
       <form onSubmit={handleLogin}>
@@ -34,7 +36,6 @@ function LoginPage() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <br /><br />
 
         <input
           type="password"
@@ -42,12 +43,11 @@ function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <br /><br />
 
         <button type="submit">Login</button>
       </form>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="error">{error}</p>}
     </div>
   );
 }
