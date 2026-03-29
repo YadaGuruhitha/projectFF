@@ -1,10 +1,5 @@
-/* ===================================================
-   SmartSeat — Monotone Gideon Design System
-   =================================================== */
-
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap');
 
-/* --- Color Tokens --- */
 :root {
   --bg-base:       #0b0b0e;
   --bg-surface:    #111116;
@@ -43,11 +38,16 @@
   --shadow-card:   0 2px 20px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.3);
   --shadow-glow:   0 0 24px rgba(169,148,104,0.08);
   --transition:    0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* aliases for components that use accent- variables */
+  --accent-dark:   #4a4232;
+  --accent-mid:    #7a6d52;
+  --accent-warm:   #a89468;
+  --accent-light:  #c9b48a;
+  --accent-pale:   #e8dcbc;
 }
 
-/* --- Reset & Base --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { font-size: 16px; scroll-behavior: smooth; }
 
 body {
@@ -60,25 +60,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Subtle grain overlay */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.5;
-}
-
-/* --- Layout Shell --- */
 .app-shell {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* --- Top Navigation --- */
 .topnav {
   position: sticky;
   top: 0;
@@ -118,9 +105,7 @@ body::before {
   letter-spacing: 0.02em;
 }
 
-.topnav-name span {
-  color: var(--gideon-warm);
-}
+.topnav-name span { color: var(--gideon-warm); }
 
 .topnav-tabs {
   display: flex;
@@ -154,7 +139,6 @@ body::before {
   border: 1px solid rgba(169,148,104,0.2);
 }
 
-/* --- Page Content --- */
 .page-content {
   flex: 1;
   padding: 2.5rem 2rem;
@@ -163,10 +147,7 @@ body::before {
   width: 100%;
 }
 
-/* --- Section Headers --- */
-.section-header {
-  margin-bottom: 2rem;
-}
+.section-header { margin-bottom: 2rem; }
 
 .section-eyebrow {
   font-family: var(--font-mono);
@@ -185,10 +166,7 @@ body::before {
   line-height: 1.2;
 }
 
-.section-title em {
-  color: var(--gideon-warm);
-  font-style: normal;
-}
+.section-title em { color: var(--gideon-warm); font-style: normal; }
 
 .section-desc {
   color: var(--text-secondary);
@@ -197,7 +175,6 @@ body::before {
   max-width: 520px;
 }
 
-/* --- Cards --- */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -207,9 +184,7 @@ body::before {
   transition: border-color var(--transition);
 }
 
-.card:hover {
-  border-color: var(--border-lit);
-}
+.card:hover { border-color: var(--border-lit); }
 
 .card-title {
   font-family: var(--font-display);
@@ -233,7 +208,6 @@ body::before {
   font-size: 13px;
 }
 
-/* --- Form Elements --- */
 .form-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -273,9 +247,7 @@ body::before {
   box-shadow: 0 0 0 3px rgba(122,109,82,0.15);
 }
 
-.form-input::placeholder {
-  color: var(--text-muted);
-}
+.form-input::placeholder { color: var(--text-muted); }
 
 textarea.form-input {
   resize: vertical;
@@ -285,7 +257,6 @@ textarea.form-input {
   line-height: 1.7;
 }
 
-/* --- Buttons --- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -304,10 +275,7 @@ textarea.form-input {
   white-space: nowrap;
 }
 
-.btn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
 .btn-primary {
   background: linear-gradient(135deg, var(--gideon-dark), var(--gideon-mid));
@@ -350,11 +318,8 @@ textarea.form-input {
   border: 1px solid rgba(110,63,63,0.6);
 }
 
-.btn-danger:hover:not(:disabled) {
-  background: #7a4040;
-}
+.btn-danger:hover:not(:disabled) { background: #7a4040; }
 
-/* --- Status Banners --- */
 .banner {
   border-radius: var(--radius-sm);
   padding: 10px 14px;
@@ -390,7 +355,6 @@ textarea.form-input {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* --- Table --- */
 .table-wrapper {
   overflow-x: auto;
   border-radius: var(--radius-md);
@@ -428,15 +392,9 @@ textarea.form-input {
   font-size: 0.82rem;
 }
 
-.data-table tbody tr:last-child td {
-  border-bottom: none;
-}
+.data-table tbody tr:last-child td { border-bottom: none; }
+.data-table tbody tr:hover td { background: rgba(169,148,104,0.04); }
 
-.data-table tbody tr:hover td {
-  background: rgba(169,148,104,0.04);
-}
-
-/* Hall badge */
 .hall-badge {
   display: inline-block;
   padding: 2px 8px;
@@ -448,12 +406,8 @@ textarea.form-input {
   font-weight: 500;
 }
 
-.seat-num {
-  color: var(--gideon-warm);
-  font-weight: 500;
-}
+.seat-num { color: var(--gideon-warm); font-weight: 500; }
 
-/* --- AI Chat / Assistant --- */
 .ai-panel {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -461,9 +415,7 @@ textarea.form-input {
   align-items: start;
 }
 
-@media (max-width: 768px) {
-  .ai-panel { grid-template-columns: 1fr; }
-}
+@media (max-width: 768px) { .ai-panel { grid-template-columns: 1fr; } }
 
 .chat-history {
   background: var(--bg-surface);
@@ -548,7 +500,6 @@ textarea.form-input {
 
 .name-chip-remove:hover { color: var(--error-text); }
 
-/* --- Loading Spinner --- */
 .spinner {
   width: 18px;
   height: 18px;
@@ -559,11 +510,8 @@ textarea.form-input {
   display: inline-block;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+@keyframes spin { to { transform: rotate(360deg); } }
 
-/* --- Dashboard Stats --- */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -603,19 +551,14 @@ textarea.form-input {
   line-height: 1;
 }
 
-.stat-sub {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-}
+.stat-sub { font-size: 0.75rem; color: var(--text-secondary); }
 
-/* --- Divider --- */
 .divider {
   height: 1px;
   background: var(--border);
   margin: 1.5rem 0;
 }
 
-/* --- Empty State --- */
 .empty-state {
   text-align: center;
   padding: 3rem 1.5rem;
@@ -635,7 +578,6 @@ textarea.form-input {
   line-height: 1.6;
 }
 
-/* --- Filter bar --- */
 .filter-bar {
   display: flex;
   gap: 10px;
@@ -644,11 +586,8 @@ textarea.form-input {
   margin-bottom: 1rem;
 }
 
-.filter-bar .form-input {
-  max-width: 220px;
-}
+.filter-bar .form-input { max-width: 220px; }
 
-/* --- Pagination / count info --- */
 .table-meta {
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -659,7 +598,6 @@ textarea.form-input {
   border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
 
-/* --- Upload area --- */
 .upload-zone {
   border: 1px dashed var(--border-lit);
   border-radius: var(--radius-md);
@@ -678,17 +616,13 @@ textarea.form-input {
   color: var(--text-secondary);
 }
 
-.upload-zone input[type="file"] {
-  display: none;
-}
+.upload-zone input[type="file"] { display: none; }
 
-/* --- Scrollbar styling --- */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-base); }
 ::-webkit-scrollbar-thumb { background: var(--border-lit); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--gideon-dark); }
 
-/* --- Responsive --- */
 @media (max-width: 640px) {
   .topnav { padding: 0 1rem; }
   .page-content { padding: 1.5rem 1rem; }
