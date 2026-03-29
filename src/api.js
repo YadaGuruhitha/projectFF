@@ -1,5 +1,4 @@
 export const API_BASE = 'https://backend-1-kxxu.onrender.com';
-
 export async function apiFetch(path, options = {}) {
   const url = `${API_BASE}${path}`;
   let response;
