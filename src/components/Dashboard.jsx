@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-const API = '${API_BASE}';
+import { API_BASE } from '../api';
+const API = API_BASE;        
 
 export default function Dashboard({ onNavigate }) {
   const [stats, setStats] = useState({ students: 0, seats: 0, halls: 0 });
